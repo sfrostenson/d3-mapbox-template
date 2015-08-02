@@ -1,0 +1,40 @@
+{
+  "name": "d3-mapbox-map-transitions-us",
+  "version": "1.0.0",
+  "description": "Interactive map that alternates between a D3 projection and Mapbox layer when a user zooms in.",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sfrostenson/d3-mapbox-map-transition-us.git"
+  },
+  "keywords": [
+    "d3",
+    "mapbox"
+  ],
+  "author": "Sarah E. Frostenson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sfrostenson/d3-mapbox-map-transition-us/issues"
+  },
+  "homepage": "https://github.com/sfrostenson/d3-mapbox-map-transition-us",
+  "dependencies": {
+    "d3": "^3.5.2",
+    "jquery": "^2.1.1",
+    "jquery-ui": "^1.10.5",
+    "leaflet": "^0.7.3",
+    "leaflet-hash": "^0.2.1",
+    "queue": "^3.0.10",
+    "queue-async": "^1.0.7",
+    "topojson": "^1.6.18"
+  },
+  "devDependencies": {
+    "browserify": "^7.0.1",
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.2.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "load-grunt-tasks": "^1.0.0"
+  }
+}

@@ -1,0 +1,129 @@
+@font-face {
+    font-family: 'Futura Today';
+    src: url(http://www.gannett-cdn.com/GDContent/global/fonts/futura_today_normal.eot);
+    src: url(http://www.gannett-cdn.com/GDContent/global/fonts/futura_today_normal.eot?#iefix) format('embedded-opentype'), url(http://www.gannett-cdn.com/GDContent/global/fonts/futura_today_normal.woff) format('woff'), url(http://www.gannett-cdn.com/GDContent/global/fonts/futura_today_normal.ttf) format('truetype'), url(http://www.gannett-cdn.com/GDContent/global/fonts/futura_bold-webfont.svg#FuturaBold) format('svg');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura Today Light';
+    src: url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_light.eot);
+    src: url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_light.eot?#iefix) format('embedded-opentype'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_light.woff) format('woff'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_light.ttf) format('truetype'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_light-webfont.svg#FuturaLight) format('svg');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura Today DemiBold';
+    src: url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_demibold.eot);
+    src: url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_demibold.eot?#iefix) format('embedded-opentype'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_demibold.woff) format('woff'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_demibold.ttf) format('truetype'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_bold-webfont.svg#FuturaDemiBold) format('svg');
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura Today Bold';
+    src: url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_bold.eot);
+    src: url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_bold.eot?#iefix) format('embedded-opentype'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_bold.woff) format('woff'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_today_bold.ttf) format('truetype'), url(http://i.usatoday.net/news/graphics/elections-2012-app/static/fonts/futura_bold-webfont.svg#FuturaBold) format('svg');
+    font-style: normal;
+}
+
+/* OUTTER WRAP STYLES */
+ .outter-wrap {
+    background:#fff;
+    margin: 0 auto 20px;
+    padding: 0;
+    width: 100%;
+    position: relative;
+}
+
+.outter-wrap:before {
+    display: block;
+    position: relative;
+    width: 100%;
+    left: -1px;
+}
+
+
+/* HEADER WRAP STYLES */
+.head-wrap {
+    display: block;
+    margin: 20px auto 0;
+    max-width: 1000px;
+    padding: 0 10px;
+}
+
+.head-wrap h2 {
+    color: #3c3c3c;
+    font-size: 30px;
+    font-family: 'Futura Today Light','arial';
+    font-weight: normal;
+    margin: 15px 0 5px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.head-wrap h6 {
+    color: #7c7c7c;
+    font: normal 14px/1.6 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0 auto 0;
+    text-align: center;
+}
+
+
+/* MAIN CONTENT WRAP STYLES */
+.main-content-wrap {    
+    margin: 0 10px;
+    height: 650px;
+    /*width: 1000px;*/
+}
+
+
+/* FOOTER STYLES */
+.footer-wrap {
+    margin-left: 200px;
+    min-height: 20px;
+}
+
+.footer-wrap span {
+    color: #3c3c3c;
+    font: normal 18px 'Futura Today Light', Arial, Helvetica, sans-serif;
+}
+
+.footer-wrap p {
+    width: 820px;
+    margin: 0 0 15px;
+    color: #626764;
+    font: 12px 'Helvetica Neue', Helvetica, arial, sans-serif;
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 990px) {
+    h2.head-wrap {font-size: 28px;}
+    h6.head-wrap {font-size: 13px;}
+    span.footer-wrap {font-size: 16px;}
+    p.footer-wrap {font-size: 10px;}
+}
+
+@media only screen and (max-width: 900px) {
+    .head-wrap {margin: 0 auto;}
+    h2.head-wrap {font-size: 30px; margin: 15px 0 5px;}
+    h6.head-wrap {font-size: 14px; margin: 0 auto 20px; text-align: left;}
+    .footer-wrap {margin: 0 auto;}
+    span.footer-wrap {font-size: 18px; margin: 200px; }
+    p.footer-wrap {font-size: 12px; text-align: left;}
+}
+
+@media only screen and (max-width: 800px) {
+    .head-wrap {margin: 20px 5px 0;}
+}
+
+@media only screen and (max-width: 600px) {
+    .head-wrap {margin: 55px 5px 50px;}
+    h2.head-wrap {font-size: 20px; margin: 0; width: 100%}
+    h6.head-wrap {font-size: 12px; margin: 0 auto 20px; text-align: left;}
+    .group h2.head-wrap {font-size: 20px;}
+    .group h6 {font-size: 11px;}
+    span.footer-wrap {font-size: 12px; }
+    p.footer-wrap {font-size: 10px; text-align: left;}
+    .group span.footer-wrap {font-size: 12px;}
+    .group p.footer-wrap {font-size: 10px;}
+}

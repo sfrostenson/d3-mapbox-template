@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--[if IE 7]>    <html class='no-js lt-ie11 lt-ie10 lt-ie9 lt-ie8' lang='en'> <![endif]-->
+<!--[if IE 8]>    <html class='no-js lt-ie11 lt-ie10 lt-ie9' lang='en'> <![endif]-->
+<!--[if IE 9]>    <html class='no-js lt-ie11 lt-ie10' lang='en'> <![endif]-->
+<!--[if IE 10]>    <html class='no-js lt-ie11' lang='en'> <![endif]-->
+<!--[if gt IE 10]><!--> <html class='no-js' lang='en'> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'/>
+
+  <!--STYLE SHEETS -->
+  <link rel="stylesheet" type="text/css" href="styles/project.css" />
+  <link rel="stylesheet" type="text/css" href="styles/base.css" />
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css' rel='stylesheet' />
+</head>
+
+<body>
+<div class='outter-wrap news'>
+	<!--PROJECT HEAD -->
+	<div class='head-wrap'>
+        <h2>Headline</h2>
+        <h6>Article Chatter. Lorem Ipsum.</h6>
+    </div>
+
+    <!--MAIN CONTENT -->
+    <div class='main-content-wrap'>
+      <div class='button' style="visibility: hidden;">
+        <button id="reset">Reset</button>
+      </div>
+      <div id='map-container'>
+        <div id='d3Map'></div>
+        <div id='mbMap'></div>
+      </div>
+<!--       <div class="map-tooltip" style='visibility: hidden;'>
+        <p class="map-tooltip-county-state"></p>
+        <p class="map-tooltip-unemployment"></p>
+      </div> -->
+      <div class="legend-container">
+        <div class="legend-bar-color">
+          <div class="color color0"></div> > 0.9</div>
+        <div class="legend-bar-color">
+          <div class="color color1"></div> > 2.7</div>
+        <div class="legend-bar-color">
+          <div class="color color2"></div> > 4.5</div>
+        <div class="legend-bar-color">
+          <div class="color color3"></div> > 6.3</div>
+        <div class="legend-bar-color">
+          <div class="color color4"></div> > 8.1</div>
+      </div>
+
+<!-- FOOTER -->
+    <div class='footer-wrap'>
+      <p><span>Credits:</span> Journalist, Journalist, Journalist <strong>Organization</strong>. <strong>Source: </strong>Data, Data, Data, Data, Data</p>
+    </div>
+</div>
+</body>
+
+
+ <!-- EXTERNAL JS FILES -->
+<script src='https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js'></script>
+<script src="js/bundled.js"></script>
