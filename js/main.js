@@ -57,7 +57,7 @@ var g = svg.append('g')
 // render maps
 var countyBounds = [];
 
-d3.json ('http://www.gannett-cdn.com/GDContent/responsive/2015/map-template/topo/counties.json', function (error, us) {
+d3.json ('../Make/counties.json', function (error, us) {
   if (error) { return console.error(error); }
 
   countyBounds = topojson.feature(us, us.objects.counties).features;
