@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--[if IE 7]>    <html class="no-js lt-ie11 lt-ie10 lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie11 lt-ie10 lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9]>    <html class="no-js lt-ie11 lt-ie10" lang="en"> <![endif]-->
+<!--[if IE 10]>    <html class="no-js lt-ie11" lang="en"> <![endif]-->
+<!--[if gt IE 10]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+
+  <!--STYLE SHEETS -->
+  <link rel="stylesheet" type="text/css" href="css/main-dev.css" />
+  <link href="https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.css" rel="stylesheet" />
+</head>
+
+<body>
+<div class="outter-wrap">
+  <div id="container">
+    <div class="button">
+      <button id="reset">Reset</button>
+    </div>
+    <div id="d3Map"></div>
+    <div id="mbMap"></div>
+  </div>
+  
+  <div id= "bottom-container">
+    <div class="legend-container">
+      <div class="legend-bar-color">
+        <div class="color color0"></div>&#62;&nbsp;0.9&#37;</div>
+      <div class="legend-bar-color">
+        <div class="color color1"></div>&#62;&nbsp;2.7&#37;</div>
+      <div class="legend-bar-color">
+        <div class="color color2"></div>&#62;&nbsp;4.5&#37;</div>
+      <div class="legend-bar-color">
+        <div class="color color3"> </div>&#62;&nbsp;6.3&#37;</div>
+      <div class="legend-bar-color">
+        <div class="color color4"></div>&#62;&nbsp;8.1&#37;</div>
+    </div>
+
+    <div class="footer-wrap">
+      <p>Source: Bureau of Labor Statistics, 2013</p>
+    </div>
+  </div>
+</div>
+ <!-- EXTERNAL JS FILES -->
+<script src="https://api.tiles.mapbox.com/mapbox.js/v2.1.4/mapbox.js"></script>
+<script src="bundled.js"></script>
+</body>

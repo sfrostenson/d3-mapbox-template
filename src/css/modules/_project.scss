@@ -1,0 +1,135 @@
+
+/* ==========================================================================
+   D3 Map & Mapbox CSS
+   ========================================================================== */
+body, html {
+  width: 100%;
+  margin: 0;
+}
+
+.outter-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+#container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 59%;
+}
+
+#mbMap {
+  position: absolute;  
+  width: 100%;
+  height: 100%;
+  top: 60px;
+  left: 0;
+}
+
+#d3Map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  .counties {
+    fill: rgb(198,198,198);
+    cursor: pointer;
+  }
+  /* quantile color scale */
+  .q0-5 { fill:rgb(219,217,235); }
+  .q1-5 { fill:rgb(203,201,226); }
+  .q2-5 { fill:rgb(158,154,200); }
+  .q3-5 { fill:rgb(117,107,177); }
+  .q4-5 { fill:rgb(84,39,143); }
+  .state-borders {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 1.5px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    pointer-events: none;
+  }
+}
+
+
+/* RESET BUTTON */
+button {
+  padding: 10px 10px 10px 10px;
+  background-color: rgb(255,255,255);
+  color: rgb(99, 99, 99);
+  box-shadow: 0 1.5px 0 rgb(226, 226, 226);
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  border: 1.5px solid rgb(194, 194, 194);
+  font-family: 'Arial';
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(237, 237, 237);
+}
+
+/* on selection */
+button:focus {
+/* remove shadow & blue outline */
+ outline: 0;
+ background-color: rgb(128, 128, 128);
+ color: #fff;
+
+}
+
+/* on button press */
+button:active {
+  box-shadow: none;
+  background-color: rgb(237, 237, 237);
+  color: rgb(99, 99, 99);
+
+}
+
+
+/* LEGEND STYLES */
+#bottom-container {
+  position: relative;
+}
+.legend-container {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  .legend-bar-color {
+    display: inline-block;
+    position: relative;
+    width: 14.5%;
+    text-align: center;
+    font: 13px 'Helvetica Neue', Helvetica, arial, sans-serif;;
+    color: rgb(90,90,90);
+  }
+  .color {
+    width: 95%;
+    height: 18px;
+  }
+  .color0 { background-color:rgb(219,217,235); }
+  .color1 { background-color:rgb(203,201,226); }
+  .color2 { background-color:rgb(158,154,200); }
+  .color3 { background-color:rgb(117,107,177); }
+  .color4 { background-color:rgb(84,39,143); }
+}
+
+.detail {
+  top: 80px;
+}
+
+/* FOOTER STYLES */
+.footer-wrap {
+  position: relative;
+  width: 100%;
+  text-align: center;
+  color: #626764;
+  font: 11px 'Helvetica Neue', Helvetica, arial, sans-serif;
+}

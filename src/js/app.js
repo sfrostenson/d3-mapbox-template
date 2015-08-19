@@ -3,26 +3,20 @@
 
 var $ = require('jQuery');
 var d3 = require('d3');
-// var queue = require('queue-async');
 var topojson = require('topojson');
 
 //jquery global variables
 var $mbMap = $('#mbMap').attr('style', 'visibility: hidden;');
-var $reset = $('button[id=reset]');
+var $reset = $('button[id=reset]').hide();
 var $d3Map = $('#d3Map');
-var $mapTooltip = $('.map-tooltip');
-// var $pop1 =       $('.popover');
-// var $popTitle =   $('.popover-title');
-// var $popContent = $('.popover-content');
+var $bottom = $('#bottom-container');
 
 // initialize mapbox map (outside logic to avoid duplicate initializations).
-L.mapbox.accessToken = 'pk.eyJ1IjoiZ3JlYXRmYWxscyIsImEiOiJTRkozTnBzIn0.ok9JnUv5zXqrLT-WVPgYiQ';
-var mbMap = L.mapbox.map('mbMap', 'examples.map-i86nkdio', {
+L.mapbox.accessToken = 'pk.eyJ1Ijoic3ByaW5nZmllbGQiLCJhIjoiMmZkYmQ2MDIwMzc0NzU2NGJlNjY3YWFhZTdkOTIzNDMifQ.p8t3Dhdb5i6yAef33jU3LQ';
+var mbMap = L.mapbox.map('mbMap', 'mapbox.streets', {
   minZoom: 4,
-  maxZoom: 8
+  maxZoom: 10
 });
-// popup for state geojson featureLayer
-var popup = L.popup();
 
 // array for our state geojson featureLayer
 var overlayLayers = [];
@@ -34,11 +28,6 @@ var height = $d3Map.height();
 var quantize = d3.scale.quantize()
     .domain([0.9, 9.9])
     .range(d3.range(5).map(function(i) { return 'q' + i + '-5'; }));
-    // console.log(quantize.invertExtent('q0-5'));
-    // console.log(quantize.invertExtent('q1-5'));
-    // console.log(quantize.invertExtent('q2-5'));
-    // console.log(quantize.invertExtent('q3-5'));
-    // console.log(quantize.invertExtent('q4-5'));
 
 var projection = d3.geo.albersUsa()
     .scale(width / 0.285 / Math.PI)
@@ -57,7 +46,7 @@ var g = svg.append('g')
 // render maps
 var countyBounds = [];
 
-d3.json ('../Make/counties.json', function (error, us) {
+d3.json ('data/counties.json', function (error, us) {
   if (error) { return console.error(error); }
 
   countyBounds = topojson.feature(us, us.objects.counties).features;
@@ -73,12 +62,10 @@ d3.json ('../Make/counties.json', function (error, us) {
           d3.select(this)
           .style('stroke', '#fff')
           .style('stroke-width', '2.5px');
-          fillTooltip(d);
         })
         .on('mouseout', function (d) {
           d3.select(this)
           .style('stroke', 'none');
-          $mapTooltip.attr('style', 'visibility: hidden;');
         })
         .on('click', clicked);
 
@@ -87,26 +74,24 @@ d3.json ('../Make/counties.json', function (error, us) {
       .attr('class', 'state-borders')
       .attr('d', path);
 
+  // D3 map resize function
   var onResize = function() {
+      var width = $d3Map.width();
+      var height = $d3Map.height();
 
-        var width = $d3Map.width();
-        var height = $d3Map.height();
-        // console.log(width, height);
+      svg.attr('width', width)
+        .attr('height', height);
 
-        svg.attr('width', width)
-          .attr('height', height);
+      projection.scale(width / 0.285 / Math.PI)
+        .translate([width / 2, height / 2]);
 
-        projection.scale(width / 0.285 / Math.PI)
-          .translate([width / 2, height / 2]);
-
-        path.projection(projection);
-        counties.attr('d', path);
-        borders.attr('d', path);
-      };
+      path.projection(projection);
+      counties.attr('d', path);
+      borders.attr('d', path);
+  };
 
   $(window).resize(debounce(onResize, 200, false));
 
-  // onEachFeature: onEachFeature TO DO
   var usLayer = L.geoJson(countyBounds, { style: style }).addTo(mbMap);
   
 });
@@ -119,12 +104,19 @@ function clicked(d) {
   var x = centroid[0];
   var y = centroid[1];
   var zoom = 1;
-  $reset.attr('style', 'visibility: visible;');
+  $reset.show();
   $mbMap.attr('style', 'visibility: visible;');
+  $bottom.addClass('detail');
 
   var stateBounds = getBounds(getState(d.properties.s));
   overlayLayers.push(stateBounds);
-  mbMap.fitBounds(stateBounds.getBounds());
+  
+  // hardcode AK
+  if (d.properties.s === 'AK') {
+      mbMap.fitBounds([[54.113578, -165.835171], [70.568625, -142.547859]]);
+    } else {
+      mbMap.fitBounds(stateBounds.getBounds());
+    }
 
   g.transition()
       .duration(750)
@@ -135,8 +127,9 @@ function clicked(d) {
 // event listener to transition back to D3 map.
 $reset.on('click', function (e) {
   $mbMap.fadeOut(600);
+  $bottom.removeClass('detail');
   $d3Map.fadeIn(1000);
-  $reset.attr('style', 'visibility: hidden;');
+  $reset.hide();
 
 // remove styling from state geojson featureLayer
   for(var i = 0, ii = overlayLayers.length; i < ii; ++i) {
@@ -154,7 +147,7 @@ $reset.on('click', function (e) {
 function getBounds(geojson) {
 
   var style = {
-    fillOpacity: 0.6,
+    fillOpacity: 0.4,
     color: '#666',
     weight: 1.8,
     opacity: 1,
@@ -167,22 +160,6 @@ function getBounds(geojson) {
         fillColor: getColor(layer.feature.properties.r),
       });
     }
-  }).on('mouseover', function (e) {
-    var layer = e.layer;
-    var properties = layer.feature.properties;
-    layer.setStyle({
-        weight: 4,
-        opacity: 1,
-        color: '#fff'
-      });
-    popup.setContent(
-      '<h2>' + properties.c + ', ' + properties.s + '</h2>' +
-      '<p>' + 'Unemployment Rate: ' + properties.r + '</p>'
-      )
-      .setLatLng(e.latlng)
-      .openOn(mbMap);
-  }).on('mouseout', function (e) {
-    e.layer.setStyle(style);
   }).addTo(mbMap);
   
   return featureLayer;
@@ -216,7 +193,7 @@ function style(feature) {
       return {
           fillColor: getColor(feature.properties.r),
           weight: 0.7,
-          opacity: 1,
+          opacity: 0.5,
           color: '#fff',
           fillOpacity: 0.5
       };
@@ -230,11 +207,6 @@ function highlightFeature(e) {
         opacity: 1,
         color: '#fff'
     });
-
-    popup.setContent(
-      '<h2>' + layer.feature.properties.c + ', ' + layer.feature.properties.s + '</h2>' +
-      '<p>' + 'Unemployment Rate: ' + layer.feature.properties.r + '</p>'
-    );
 }
 
 function resetHighlight(e) {
@@ -247,19 +219,6 @@ function onEachFeature(feature, layer) {
         mouseout: resetHighlight
     });
 }
-
-function fillTooltip(d) {
-  var mouse = d3.mouse(g.node()).map( function(d) { return (d); } );
-
-  if (mouse[0] < 500) {
-    $mapTooltip.attr('style', 'left:'+(mouse[0]+18)+'px; top:'+(mouse[1]+130)+'px');
-  } else {
-    $mapTooltip.attr('style', 'left:'+(mouse[0]-160)+'px; top:'+(mouse[1]+130)+'px');
-  }
-
-  $('.map-tooltip-county-state').html(d.properties.c + ', ' + d.properties.s);
-  $('.map-tooltip-unemployment').html('Unemployment Rate: ' + d.properties.r);
-  }
 
 // Debounce function to limit number of function calls
 function debounce(func, wait, immediate) {

@@ -1,0 +1,11 @@
+$desktop: 500;
+
+@mixin breakpoint($foo) {
+  @media only screen and (min-width: $foo + px) { @content; }
+}
+
+@mixin desktop {
+  @include breakpoint($desktop) {
+    @content;
+  }
+}
