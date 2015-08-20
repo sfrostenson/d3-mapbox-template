@@ -1,0 +1,27 @@
+button:active,button:hover{background-color:#ededed}
+body,html{width:100%;margin:0}
+.outter-wrap{position:absolute;top:0;bottom:0;width:100%;padding:20px;box-sizing:border-box}
+#container{position:relative;width:100%;padding-bottom:59%}
+#d3Map,#mbMap{position:absolute;height:100%;width:100%}
+#mbMap{top:60px;left:0}
+#bottom-container,.footer-wrap,.legend-container{position:relative}
+#d3Map .counties{fill:#c6c6c6;cursor:pointer}
+#d3Map .q0-5{fill:#dbd9eb}
+#d3Map .q1-5{fill:#cbc9e2}
+#d3Map .q2-5{fill:#9e9ac8}
+#d3Map .q3-5{fill:#756bb1}
+#d3Map .q4-5{fill:#54278f}
+#d3Map .state-borders{fill:none;stroke:#fff;stroke-width:1.5px;stroke-linejoin:round;stroke-linecap:round;pointer-events:none}
+button{padding:10px;background-color:#fff;color:#636363;box-shadow:0 1.5px 0 #e2e2e2;border-radius:3px;-moz-border-radius:3px;border:1.5px solid #c2c2c2;font-family:Arial;text-transform:uppercase;font-weight:700;font-size:12px;text-align:center;cursor:pointer}
+button:focus{outline:0;background-color:gray;color:#fff}
+button:active{box-shadow:none;color:#636363}
+.legend-container{width:100%;text-align:center}
+.legend-container .legend-bar-color{display:inline-block;position:relative;width:14.5%;text-align:center;font:13px 'Helvetica Neue',Helvetica,arial,sans-serif;color:#5a5a5a}
+.legend-container .color{width:95%;height:18px}
+.legend-container .color0{background-color:#dbd9eb}
+.legend-container .color1{background-color:#cbc9e2}
+.legend-container .color2{background-color:#9e9ac8}
+.legend-container .color3{background-color:#756bb1}
+.legend-container .color4{background-color:#54278f}
+.detail{top:80px}
+.footer-wrap{width:100%;text-align:center;color:#626764;font:11px 'Helvetica Neue',Helvetica,arial,sans-serif}

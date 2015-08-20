@@ -1,5 +1,5 @@
 # don't store actual dependency files because package.json shows what is needed.
 .DS_Store
-build
+topo
 node_modules
 npm-debug.log
